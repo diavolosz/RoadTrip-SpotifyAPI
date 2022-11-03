@@ -15,12 +15,19 @@ export default function Authorization() {
     window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`
   }
 
+  const handleLogout = () => {
+    localStorage.clear()
+    window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
+  }
 
   return (
     <div>
       <div id="login">
         <h1>First, log in to spotify</h1>
         <button onClick={() => {handleLogin()}}>Log in</button>
+      </div>
+      <div>
+        <button onClick={() => {handleLogout()}}>Logout</button>
       </div>
     </div>
   )
