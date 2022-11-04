@@ -9,7 +9,9 @@ export default function Authorization(props) {
 
   // const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
+  
+  // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
+  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/";
   const SPACE_DELIMITER = "%20";
   const SCOPES = [
     "user-read-currently-playing",
