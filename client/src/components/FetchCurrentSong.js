@@ -14,7 +14,7 @@ export default function FetchCurrentSong(props) {
           artist: res.item.artists[0].name,
           alblum: res.item.album.name,
         })
-        console.log(res)
+        // console.log(res)
       })
   }
 

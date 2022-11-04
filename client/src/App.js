@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import Authorization from './components/Authorization';
 import FetchCurrentSong from './components/FetchCurrentSong'
 import SongbySearch from './components/SongbySearch'
+import GenerateInvitation from './components/GenerateInvitation'
+import JoinSession from './components/JoinSession'
 
 
 let Spotify = require('spotify-web-api-js')
@@ -16,6 +18,10 @@ let spotifyApi = new SpotifyWebApi();
 function App() {
 
   let [tokenInfo, setTokenInfo] = useState();
+  // this is only the access token 
+
+  let [invitationToken, setInvitationToken] = useState()
+  // this is only updated if invitation is recieved 
 
 
   const getTokenInfo = (hash) => {
@@ -30,27 +36,48 @@ function App() {
   }
 
   useEffect(() => {
-    if (window.location.hash) {
+
+    let invite = localStorage.invitation_token
+    let current = localStorage.access_token
+
+    if (invite) {
+      spotifyApi.setAccessToken(invite)
+      setTokenInfo(invite)
+    } else if (window.location.hash) {
       const { access_token, expires_in, token_type } = getTokenInfo(window.location.hash)
-      localStorage.clear()
+
       localStorage.setItem("access_token", access_token)
-      localStorage.setItem("expires_in", expires_in)
-      localStorage.setItem("token_type", token_type)
-      spotifyApi.setAccessToken(`${access_token}`)
+      spotifyApi.setAccessToken(access_token)
       setTokenInfo(access_token)
     } else {
-      if (localStorage.access_token) {
-        spotifyApi.setAccessToken(localStorage.access_token)
-        setTokenInfo(localStorage.access_token)
-      }
+      spotifyApi.setAccessToken(current)
+      setTokenInfo(current)
     }
-  }, [])
+  })
 
   return (
     <div className="App">
-      <Authorization token={tokenInfo} spotifyApi={spotifyApi}/>
-      <FetchCurrentSong token={tokenInfo} spotifyApi={spotifyApi}/>
-      <SongbySearch spotifyApi={spotifyApi}/>
+
+      <Authorization
+        token={invitationToken ? invitationToken : tokenInfo}
+        spotifyApi={spotifyApi}
+      />
+
+      <FetchCurrentSong
+        token={invitationToken ? invitationToken : tokenInfo}
+        spotifyApi={spotifyApi}
+      />
+
+      <SongbySearch spotifyApi={spotifyApi} />
+
+      <GenerateInvitation />
+
+      <JoinSession
+        token={invitationToken ? invitationToken : tokenInfo}
+        invitationToken={invitationToken}
+        setInvitationToken={setInvitationToken}
+      />
+
     </div>
   );
 }

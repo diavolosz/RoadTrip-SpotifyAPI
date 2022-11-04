@@ -9,6 +9,7 @@ export default function QueueNextSong(props) {
 
   const queneSong = (track_name, track_uri) => {
     console.log(track_uri)
+
     spotifyApi.queue(track_uri)
     .then((res) => {
       console.log(res)
