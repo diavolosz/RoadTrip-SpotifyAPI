@@ -11,7 +11,7 @@ export default function Authorization(props) {
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
   
   // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
-  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app"; //use this for build deployment
+  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; //use this for build deployment
   const SPACE_DELIMITER = "%20";
   const SCOPES = [
     "user-read-currently-playing",
