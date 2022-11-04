@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import QueueNextSong from './QueueNextSong'
+
 
 export default function SongbySearch(props) {
 
@@ -14,11 +16,11 @@ export default function SongbySearch(props) {
   const handleSearchSubmit = (e) => {
     e.preventDefault()
     setSearchValue("")
-    console.log({ searchValue, searchType })
+    // console.log({ searchValue, searchType })
 
     spotifyApi.search(searchValue, [searchType], { limit: 10 })
       .then((res) => {
-        console.log(res.tracks.items)
+        // console.log(res.tracks.items)
 
         let filteredSearchResult = res.tracks.items.map((result) => {
           return {
@@ -79,6 +81,12 @@ export default function SongbySearch(props) {
           <div>artist name: {artist_name}</div>
           <div>artist id: {artist_id}</div>
           <div>external url: <a href={external_urls}>{external_urls}</a></div>
+
+          <QueueNextSong
+          track_name={track_name}
+            track_uri={track_uri}
+            spotifyApi={spotifyApi}
+          />
           <br />
         </div>
       )

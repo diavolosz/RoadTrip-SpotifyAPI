@@ -9,7 +9,12 @@ export default function Authorization(props) {
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
   const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
   const SPACE_DELIMITER = "%20";
-  const SCOPES = ["user-read-currently-playing", "user-read-playback-state"];
+  const SCOPES = [
+    "user-read-currently-playing", 
+    "user-read-playback-state",
+    "playlist-modify-private",
+    "user-modify-playback-state"
+  ];
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
 
   const [logged, setLogged] = useState(false)
