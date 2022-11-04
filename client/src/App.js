@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 
 import Authorization from './components/Authorization';
 import FetchCurrentSong from './components/FetchCurrentSong'
+import SongbySearch from './components/SongbySearch'
+
 
 let Spotify = require('spotify-web-api-js')
 let SpotifyWebApi = require('spotify-web-api-js')
@@ -36,13 +38,19 @@ function App() {
       localStorage.setItem("token_type", token_type)
       spotifyApi.setAccessToken(`${access_token}`)
       setTokenInfo(access_token)
+    } else {
+      if (localStorage.access_token) {
+        spotifyApi.setAccessToken(localStorage.access_token)
+        setTokenInfo(localStorage.access_token)
+      }
     }
   }, [])
 
   return (
     <div className="App">
-      <Authorization />
+      <Authorization token={tokenInfo} spotifyApi={spotifyApi}/>
       <FetchCurrentSong token={tokenInfo} spotifyApi={spotifyApi}/>
+      <SongbySearch spotifyApi={spotifyApi}/>
     </div>
   );
 }

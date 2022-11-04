@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 
-export default function Authorization() {
+export default function Authorization(props) {
 
+  const { token, spotifyApi } = props
+ 
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
   const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
@@ -25,6 +27,7 @@ export default function Authorization() {
   useEffect(() => {
     if (localStorage.access_token) {
       setLogged(true)
+      spotifyApi.setAccessToken(`${token}`)
     }
   }, [])
 
