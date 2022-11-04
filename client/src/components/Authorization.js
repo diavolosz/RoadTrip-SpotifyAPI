@@ -32,7 +32,7 @@ export default function Authorization(props) {
   const handleLogout = (e) => {
     localStorage.clear()
     // window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
-    window.location = `${REDIRECT_URI_AFTER_LOGIN}` //use this for build deployment
+    window.location = REDIRECT_URI_AFTER_LOGIN //use this for build deployment
     setLogged(false)
   }
 
