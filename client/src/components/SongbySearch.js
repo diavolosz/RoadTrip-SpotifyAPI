@@ -13,6 +13,7 @@ export default function SongbySearch(props) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
+    setSearchValue("")
     console.log({ searchValue, searchType })
 
     spotifyApi.search(searchValue, [searchType], { limit: 10 })
@@ -34,23 +35,27 @@ export default function SongbySearch(props) {
   }
 
 
+  const handleResetSearchResult = () => {
+    setSearchResult()
+  }
+
   const searchListObj = [
     {
       label: 'track',
       value: 'track'
     },
-    {
-      label: 'album',
-      value: 'album'
-    },
-    {
-      label: 'artist',
-      value: 'artist'
-    },
-    {
-      label: 'playlist',
-      value: 'playlist'
-    },
+    // {
+    //   label: 'album',
+    //   value: 'album'
+    // },
+    // {
+    //   label: 'artist',
+    //   value: 'artist'
+    // },
+    // {
+    //   label: 'playlist',
+    //   value: 'playlist'
+    // },
   ]
 
 
@@ -63,11 +68,11 @@ export default function SongbySearch(props) {
 
   let searchResultDisplay
   if (searchResult) {
-    searchResultDisplay = searchResult.map((display) => {
+    searchResultDisplay = searchResult.map((display, index) => {
       const { track_name, track_id, track_uri, artist_name, artist_id, external_urls } = display
 
       return (
-        <div>
+        <div key={index}>
           <div>track name: {track_name}</div>
           <div>track id: {track_id}</div>
           <div>track uri: {track_uri}</div>
@@ -95,10 +100,11 @@ export default function SongbySearch(props) {
         </select>
         <button type="submit">Submit</button>
       </form>
+      <button onClick={() => handleResetSearchResult()}>Clear Search Result</button>
       <div>
         {!searchResult
           ? <h2>empty search</h2>
-          : <p>{searchResultDisplay}</p>
+          : <div>{searchResultDisplay}</div>
         }
       </div>
     </section>

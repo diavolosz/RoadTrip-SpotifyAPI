@@ -36,7 +36,7 @@ export default function Authorization(props) {
       <div id="login">
         {!logged
           ? <h1>First, log in to spotify</h1>
-          : <h1>You are logged in !</h1>
+          : <h1>Welcome ! You are logged in !</h1>
         }
         <button onClick={() => { handleLogin() }}>Log in</button>
       </div>
