@@ -76,6 +76,7 @@ function App() {
         token={invitationToken ? invitationToken : tokenInfo}
         invitationToken={invitationToken}
         setInvitationToken={setInvitationToken}
+        spotifyApi={spotifyApi}
       />
 
     </div>
