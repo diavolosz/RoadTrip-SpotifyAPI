@@ -1,8 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import './styles/color/color.scss'
 
 import { useEffect, useState } from 'react'
 
+import LandingAnimation from './components/LandingAnimation';
 import Authorization from './components/Authorization';
 import FetchCurrentSong from './components/FetchCurrentSong'
 import SongbySearch from './components/SongbySearch'
@@ -17,11 +19,14 @@ let spotifyApi = new SpotifyWebApi();
 
 function App() {
 
+  let [landingDisplay, setLandingDisplay] = useState(true)
+
   let [tokenInfo, setTokenInfo] = useState();
   // this is only the access token 
 
   let [invitationToken, setInvitationToken] = useState()
   // this is only updated if invitation is recieved 
+
 
 
   const getTokenInfo = (hash) => {
@@ -53,17 +58,24 @@ function App() {
       spotifyApi.setAccessToken(current)
       setTokenInfo(current)
     }
-  })
+  }, [])
+
+  setTimeout(() => {
+    setLandingDisplay(false)
+  }, 5000)
+
 
   return (
     <div className="App">
 
+      {landingDisplay && <LandingAnimation />}
+      
       <Authorization
         token={invitationToken ? invitationToken : tokenInfo}
         spotifyApi={spotifyApi}
       />
 
-      <FetchCurrentSong
+      {/* <FetchCurrentSong
         token={invitationToken ? invitationToken : tokenInfo}
         spotifyApi={spotifyApi}
       />
@@ -77,7 +89,7 @@ function App() {
         invitationToken={invitationToken}
         setInvitationToken={setInvitationToken}
         spotifyApi={spotifyApi}
-      />
+      /> */}
 
     </div>
   );

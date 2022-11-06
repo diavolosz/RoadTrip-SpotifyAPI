@@ -1,0 +1,128 @@
+.landing-container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+
+  .upper-block {
+    position: absolute;
+    height: 40vh;
+    width: 100vw;
+    background-color: var(--background-primary);
+    z-index: 50;
+
+    animation: landingUp 1.2s ease-in;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+  }
+
+  .lower-block {
+    position: absolute;
+    height: 60vh;
+    width: 100vw;
+    top: 40vh;
+    background-color: var(--background-primary);
+    z-index: 50;
+
+    animation: landingDown 1.2s ease-in;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+  }
+
+  .intro-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 51;
+    top: 40vh;
+    margin: auto;
+    width: 70%;
+
+    .logo-name {
+      margin-bottom: 20px;
+
+      font-family: 'Courier Prime', monospace;
+      font-size: 36px;
+      font-size: 700;
+
+      animation: logoFadeIn 2.8s;
+      animation-fill-mode: forwards;
+    }
+
+    .logo-icon {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      border: 2px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      transform: rotate(0deg);
+
+      animation: logoSpin 2.8s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+
+// animation
+
+@keyframes landingUp {
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes landingDown {
+  to {
+    top: 100vh;
+    height: 0px;
+  }
+}
+
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoSpin {
+  0% {
+    top: 20px;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  25% {
+    top: 0px;
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+  80% {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+
