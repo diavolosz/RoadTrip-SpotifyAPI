@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.scss';
 import './styles/color/color.scss'
-
 import { useEffect, useState } from 'react'
+
+
 
 import LandingAnimation from './components/LandingAnimation';
 import Authorization from './components/Authorization';
@@ -11,6 +12,7 @@ import SongbySearch from './components/SongbySearch'
 import GenerateInvitation from './components/GenerateInvitation'
 import JoinSession from './components/JoinSession'
 
+let CryptoJS = require("crypto-js")
 
 let Spotify = require('spotify-web-api-js')
 let SpotifyWebApi = require('spotify-web-api-js')
@@ -51,12 +53,24 @@ function App() {
     } else if (window.location.hash) {
       const { access_token, expires_in, token_type } = getTokenInfo(window.location.hash)
 
-      localStorage.setItem("access_token", access_token)
-      spotifyApi.setAccessToken(access_token)
-      setTokenInfo(access_token)
+      let encrypted_token = CryptoJS.AES.encrypt(access_token, "******")
+      let bytes = CryptoJS.AES.decrypt(encrypted_token, "******")
+      let decrypted_token = bytes.toString(CryptoJS.enc.Utf8)
+
+      // console.log(encrypted_token)
+      // console.log(decrypted_token)
+
+      localStorage.setItem("access_token", encrypted_token)
+      spotifyApi.setAccessToken(decrypted_token)
+      setTokenInfo(decrypted_token)
     } else {
-      spotifyApi.setAccessToken(current)
-      setTokenInfo(current)
+      if (current) {
+        let bytes = CryptoJS.AES.decrypt(current, "******")
+        let decrypted_token = bytes.toString(CryptoJS.enc.Utf8)
+        spotifyApi.setAccessToken(decrypted_token)
+        setTokenInfo(decrypted_token)
+      }
+
     }
   }, [])
 
@@ -69,10 +83,12 @@ function App() {
     <div className="App">
 
       {landingDisplay && <LandingAnimation />}
-      
+
       <Authorization
         token={invitationToken ? invitationToken : tokenInfo}
         spotifyApi={spotifyApi}
+        invitationToken={invitationToken}
+        setInvitationToken={setInvitationToken}
       />
 
       {/* <FetchCurrentSong

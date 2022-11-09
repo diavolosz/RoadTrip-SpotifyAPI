@@ -6,19 +6,20 @@ export default function FetchCurrentSong(props) {
 
   const { token, spotifyApi } = props
 
+  const [currentSong, setCurrentSong] = useState()
+
   const fetchUserCurrentSong = (token) => {
     spotifyApi.getMyCurrentPlaybackState()
-      .then((res) => {
-        setCurrentSong({
-          name: res.item.name,
-          artist: res.item.artists[0].name,
-          alblum: res.item.album.name,
-        })
-        // console.log(res)
+    .then((res) => {
+        console.log(res)
+        // setCurrentSong({
+        //   name: res.item.name,
+        //   artist: res.item.artists[0].name,
+        //   alblum: res.item.album.name,
+        // })
       })
   }
 
-  const [currentSong, setCurrentSong] = useState()
 
 
   return (

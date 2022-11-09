@@ -4,6 +4,8 @@
 
 import { useState } from 'react'
 
+let CryptoJS = require("crypto-js")
+
 export default function JoinSession(props) {
 
   const {spotifyApi, token, invitationToken, setInvitationToken} = props
@@ -16,12 +18,21 @@ export default function JoinSession(props) {
     setInvitationTokenEntry("")
 
     setInvitationToken(newTokenInvite)
+
+    let bytes = CryptoJS.AES.decrypt(newTokenInvite, "******")
+    let decrypted_token = bytes.toString(CryptoJS.enc.Utf8)
+
+    console.log(decrypted_token)
+
+    localStorage.setItem("invitation_token", decrypted_token)
     spotifyApi.setAccessToken(localStorage.invitation_token)
-    localStorage.setItem("invitation_token", newTokenInvite)
   }
 
   const handleSessionLeave = () => {
-    spotifyApi.setAccessToken(localStorage.access_token)
+    let bytes = CryptoJS.AES.decrypt(localStorage.access_token, "******")
+    let decrypted_token = bytes.toString(CryptoJS.enc.Utf8)
+
+    spotifyApi.setAccessToken(decrypted_token)
     localStorage.removeItem("invitation_token")
   }
 

@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 
+import GenerateInvitation from './GenerateInvitation'
+import JoinSession from './JoinSession'
+import FetchCurrentSong from './FetchCurrentSong'
+
 import '../styles/Authorization.scss'
+
+let CryptoJS = require("crypto-js")
+
 
 export default function Authorization(props) {
 
-  const { token, spotifyApi } = props
+  const { spotifyApi, token, invitationToken, setInvitationToken } = props
 
   const [CLIENT_ID, setCLIENT_ID] = useState("")
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -98,8 +105,19 @@ export default function Authorization(props) {
 
   // this confirms that the access token is still being applied 
   useEffect(() => {
-    if (localStorage.access_token) {
-      spotifyApi.setAccessToken(localStorage.access_token)
+
+    let invite = localStorage.invitation_token
+    let current = localStorage.access_token
+
+    if (invite) {
+      spotifyApi.setAccessToken(invite)
+      // setTokenInfo(invite)
+    } else {
+      let bytes = CryptoJS.AES.decrypt(current, "******")
+      let decrypted_token = bytes.toString(CryptoJS.enc.Utf8)
+      // console.log(current)
+      // console.log(decrypted_token)
+      spotifyApi.setAccessToken(decrypted_token)
     }
   }, [token])
 
@@ -160,6 +178,13 @@ export default function Authorization(props) {
             <span>Welcome back ! {userInfo.username}.</span>
             <span>Start inviting your friend to join !</span>
 
+            <GenerateInvitation />
+
+            <FetchCurrentSong
+              token={invitationToken ? invitationToken : token}
+              spotifyApi={spotifyApi}
+            />
+
             <div className="logout-button">
               <button onClick={() => { handleLogout() }}>Logout</button>
             </div>
@@ -170,6 +195,18 @@ export default function Authorization(props) {
           <div className="">
             <span>Welcome back ! {userInfo.username}.</span>
             <span>Look for an invitaion for a session !</span>
+
+            <JoinSession
+              token={invitationToken ? invitationToken : token}
+              spotifyApi={spotifyApi}
+              invitationToken={invitationToken}
+              setInvitationToken={setInvitationToken}
+            />
+
+            <FetchCurrentSong
+              token={invitationToken ? invitationToken : token}
+              spotifyApi={spotifyApi}
+            />
 
             <div className="logout-button">
               <button onClick={() => { handleLogout() }}>Logout</button>

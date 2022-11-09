@@ -10,7 +10,7 @@ export default function GenerateInvitation() {
 
   return (
     <section>
-      <button onClick={() => showCurrentAcessToken()}>Click to copy Access Token</button>
+      <button onClick={() => showCurrentAcessToken()}>Click to copy Invitation Code</button>
     </section>
 
   )
