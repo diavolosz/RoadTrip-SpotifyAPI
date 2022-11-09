@@ -7,6 +7,7 @@ export default function FetchCurrentSong(props) {
   const { token, spotifyApi } = props
 
   const fetchUserCurrentSong = (token) => {
+
     spotifyApi.getMyCurrentPlaybackState()
       .then((res) => {
         setCurrentSong({

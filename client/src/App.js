@@ -13,7 +13,7 @@ import JoinSession from './components/JoinSession'
 
 
 let Spotify = require('spotify-web-api-js')
-let SpotifyWebApi = require('spotify-web-api-js')
+let SpotifyWebApi = require('./spotify-web-api.js')
 let s = new Spotify();
 let spotifyApi = new SpotifyWebApi();
 
@@ -27,6 +27,7 @@ function App() {
   let [invitationToken, setInvitationToken] = useState()
   // this is only updated if invitation is recieved 
 
+  let [functionDisplay, setFunctionDisplay] = useState('fetch-current')
 
 
   const getTokenInfo = (hash) => {
@@ -69,11 +70,14 @@ function App() {
     <div className="App">
 
       {landingDisplay && <LandingAnimation />}
-      
+
+
+
       <Authorization
         token={invitationToken ? invitationToken : tokenInfo}
         spotifyApi={spotifyApi}
       />
+
 
       {/* <FetchCurrentSong
         token={invitationToken ? invitationToken : tokenInfo}
