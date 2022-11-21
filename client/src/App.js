@@ -66,6 +66,8 @@ function App() {
   }, 5000)
 
 
+  const [currentFunc, setCurrentFunc] = useState('default')
+
   return (
     <div className="App">
 
@@ -78,17 +80,54 @@ function App() {
         spotifyApi={spotifyApi}
       />
 
+      {currentFunc === 'default' &&
+        <div className='options-container'>
+          <section className='option-C'>
+            <div onClick={() => { setCurrentFunc('fetchSong') }} className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+          </section>
 
-      {/* <FetchCurrentSong
-        token={invitationToken ? invitationToken : tokenInfo}
-        spotifyApi={spotifyApi}
-      />
+          <section className='option-C'>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+            <div className='option-card'>
+              <span>Current Song</span>
+            </div>
+          </section>
 
-      <SongbySearch spotifyApi={spotifyApi} />
 
-      <GenerateInvitation />
+        </div>
+      }
 
-      <JoinSession
+      {currentFunc === 'fetchSong' &&
+        <FetchCurrentSong
+          token={invitationToken ? invitationToken : tokenInfo}
+          spotifyApi={spotifyApi}
+        />
+      }
+
+      {/* <SongbySearch spotifyApi={spotifyApi} /> */}
+
+      {/* <GenerateInvitation /> */}
+
+      {/* <JoinSession
         token={invitationToken ? invitationToken : tokenInfo}
         invitationToken={invitationToken}
         setInvitationToken={setInvitationToken}

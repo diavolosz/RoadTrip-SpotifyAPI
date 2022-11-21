@@ -6,7 +6,7 @@ $font-primary: global white;
 $main-green: global #1DB954;
 
 
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
 .App {
   --background-primary: #121212;
@@ -17,7 +17,39 @@ $main-green: global #1DB954;
   --main-green: #1DB954;
 
   height: 100vh;
-
   color: var(--font-primary);
   background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    background-color: red;
+    height: 60%;
+    width: 100%;
+
+    .option-C {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .option-card {
+        height: 70px;
+        width: 150px;
+        background-color: rgb(172, 80, 80);
+        padding: 10px;
+
+        span {
+          font-size: 16px;
+          font-weight: 700;
+          font-family: 'Montserrat', sans-serif;
+        }
+      }
+    }
+  }
+
 }
