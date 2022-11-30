@@ -156,24 +156,22 @@ export default function Authorization(props) {
         {sessionState === "active" && loginForm}
 
         {localStorage.session_state === "create" &&
-          <div className="">
+          <div className="intro-box">
+            <div className="logout-button">
+              <button onClick={() => { handleLogout() }}>Quit Session</button>
+            </div>
             <span>Welcome back ! {userInfo.username}.</span>
             <span>Start inviting your friend to join !</span>
-
-            <div className="logout-button">
-              <button onClick={() => { handleLogout() }}>Logout</button>
-            </div>
           </div>
         }
 
         {localStorage.session_state === "join" &&
-          <div className="">
-            <span>Welcome back ! {userInfo.username}.</span>
-            <span>Look for an invitaion for a session !</span>
-
+          <div className="intro-box">
             <div className="logout-button">
               <button onClick={() => { handleLogout() }}>Logout</button>
             </div>
+            <span>Welcome back ! {userInfo.username}.</span>
+            <span>Look for an invitaion for a session !</span>
           </div>
         }
       </div>

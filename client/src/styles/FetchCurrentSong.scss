@@ -1,0 +1,79 @@
+.item-container {
+  // background-color: blue;
+  height: 70vh;
+
+  .item-body {
+    margin-top: 25px;
+    background-color: var(--background-tertiary);
+    height: 100%;
+    width: 88vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 36px;
+    // justify-content: end;
+
+    .arm {
+      position: absolute;
+      object-fit: cover;
+      height: 150px;
+      top: 30%;
+      left: 58%;
+      rotate: -22deg;
+      filter: contrast(80%);
+    }
+
+    .item-info-container {
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .image-container {
+        margin-top: 25px;
+        height: 17em;
+        border-radius: 50%;
+        border: 5px rgba(255, 255, 255, 0.479) solid;
+        background-color: black;
+
+
+        // &::after {
+        //   content: '';
+        //   display: inline-block;
+        //   position: absolute;
+        //   left: 38.5vw;
+        //   top: 37vh;
+        //   height: 80px;
+        //   width: 80px;
+        //   border-radius: 50%;
+        //   background-color: rgb(218, 218, 218);
+        //   border: 3px rgb(48, 48, 48) solid;
+        // }
+
+        .disc-img {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 17em;
+          width: 17em;
+          object-fit: cover;
+          border-radius: 50%;
+          animation: spinDisc 10s linear;
+          animation-iteration-count: infinite;
+        }
+      }
+
+    }
+  }
+
+}
+
+@keyframes spinDisc {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}

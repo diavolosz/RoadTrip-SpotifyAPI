@@ -66,6 +66,13 @@ function App() {
   }, 5000)
 
 
+  const showCurrentAcessToken = () => {
+    console.log(localStorage.access_token)
+    navigator.clipboard.writeText(localStorage.access_token)
+  }
+
+
+
   const [currentFunc, setCurrentFunc] = useState('default')
 
   return (
@@ -80,36 +87,47 @@ function App() {
         spotifyApi={spotifyApi}
       />
 
-      {currentFunc === 'default' &&
+      {currentFunc === 'default' && tokenInfo &&
         <div className='options-container'>
           <section className='option-C'>
             <div onClick={() => { setCurrentFunc('fetchSong') }} className='option-card'>
               <span>Current Song</span>
             </div>
-            <div className='option-card'>
+
+
+            {localStorage.session_state === "create" &&
+              <div className='option-card' onClick={() => showCurrentAcessToken()}>
+                <span>Generate Invite</span>
+              </div>
+            }
+            {localStorage.session_state === "join" &&
+              <div className='option-card' onClick={() => { setCurrentFunc('joinSession') }}>
+                <span>Join Session</span>
+              </div>
+            }
+
+            {/* <div className='option-card'>
               <span>Current Song</span>
-            </div>
-            <div className='option-card'>
+            </div> */}
+
+            {/* <div className='option-card'>
               <span>Current Song</span>
-            </div>
-            <div className='option-card'>
-              <span>Current Song</span>
-            </div>
+            </div> */}
           </section>
 
           <section className='option-C'>
-            <div className='option-card'>
-              <span>Current Song</span>
+            <div className='option-card' onClick={() => { setCurrentFunc('queueSong') }}>
+              <span>Queue Song</span>
             </div>
-            <div className='option-card'>
+
+
+
+            {/* <div className='option-card'>
               <span>Current Song</span>
-            </div>
-            <div className='option-card'>
+            </div> */}
+            {/* <div className='option-card'>
               <span>Current Song</span>
-            </div>
-            <div className='option-card'>
-              <span>Current Song</span>
-            </div>
+            </div> */}
           </section>
 
 
@@ -120,8 +138,24 @@ function App() {
         <FetchCurrentSong
           token={invitationToken ? invitationToken : tokenInfo}
           spotifyApi={spotifyApi}
+          setCurrentFunc={setCurrentFunc}
         />
       }
+
+      {currentFunc === 'joinSession' &&
+        <JoinSession
+          token={invitationToken ? invitationToken : tokenInfo}
+          invitationToken={invitationToken}
+          setInvitationToken={setInvitationToken}
+          spotifyApi={spotifyApi}
+        />
+      }
+
+      {currentFunc === 'queueSong' &&
+        <SongbySearch spotifyApi={spotifyApi} />
+      }
+
+
 
       {/* <SongbySearch spotifyApi={spotifyApi} /> */}
 
