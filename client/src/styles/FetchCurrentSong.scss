@@ -2,9 +2,11 @@
   // background-color: blue;
   height: 70vh;
 
+
   .item-body {
     margin-top: 25px;
-    background-color: var(--background-tertiary);
+    background-color: #efefef;
+    // background-color: var(--background-tertiary);
     height: 100%;
     width: 88vw;
     display: flex;
@@ -15,27 +17,43 @@
     .arm {
       position: absolute;
       object-fit: cover;
-      height: 150px;
+      height: 120px;
       top: 30%;
-      left: 58%;
+      left: 62%;
       rotate: -22deg;
-      filter: contrast(80%);
+      filter: contrast(80%) drop-shadow(0 0 0.2em rgb(194, 193, 193));
+    }
+
+    .button-container {
+      margin: 20px auto;
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      button {
+        font-family: 'Gloria Hallelujah', cursive;
+        font-size: 20px;
+      }
+
     }
 
     .item-info-container {
+      margin-top: 25px;
       height: 70%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
 
       .image-container {
-        margin-top: 25px;
-        height: 17em;
+        height: 280px;
+        width: 280px;
         border-radius: 50%;
         border: 5px rgba(255, 255, 255, 0.479) solid;
         background-color: black;
-
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        animation: fadeIn 1s forwards;
 
         // &::after {
         //   content: '';
@@ -54,19 +72,85 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 17em;
-          width: 17em;
+          height: 280px;
+          width: 280px;
           object-fit: cover;
           border-radius: 50%;
-          animation: spinDisc 10s linear;
-          animation-iteration-count: infinite;
+          animation: spinDisc 10s linear infinite;
+          // animation-iteration-count: infinite;
+
+          // animation: fadeIn 1s forwards;
+
+        }
+      }
+
+      .item-details {
+        color: black;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        white-space: nowrap;
+
+        .song-name {
+          margin: 10px 0 0 0;
+          height: 35px;
+          font-family: 'Gloria Hallelujah', cursive;
+          font-size: 22px;
+          font-weight: bold;
+        }
+
+        .song-name-long {
+          margin: 10px 0 0 0;
+          height: 35px;
+          font-family: 'Gloria Hallelujah', cursive;
+          font-size: 22px;
+          font-weight: bold;
+        }
+
+        .song-artist {
+          margin: 0;
+          font-family: 'Gloria Hallelujah', cursive;
+          font-size: 16px;
         }
       }
 
     }
   }
-
 }
+
+.neu-button {
+  padding: 0.5em 1em;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
+  color: rgb(39, 39, 39);
+  font-size: 1rem;
+  font-weight: bold;
+  // letter-spacing: .2rem;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15);
+  -webkit-tap-highlight-color: rgba(201, 224, 253, 0);
+
+  &:active {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+      -2px -2px 4px rgba(255, 255, 255, .4),
+      2px 2px 2px rgba(255, 255, 255, .05),
+      2px 2px 4px rgba(0, 0, 0, .1);
+  }
+}
+
+
+
+
+
+
 
 @keyframes spinDisc {
   from {
@@ -75,5 +159,15 @@
 
   to {
     rotate: 360deg;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
   }
 }

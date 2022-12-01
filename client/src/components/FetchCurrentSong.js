@@ -6,21 +6,24 @@ export default function FetchCurrentSong(props) {
 
   const { token, spotifyApi, setCurrentFunc } = props
 
+  const [currentSong, setCurrentSong] = useState('pending')
+  const [wordLength, setwWordLength] = useState('pending')
+
   const fetchUserCurrentSong = (token) => {
 
     spotifyApi.getMyCurrentPlaybackState()
       .then((res) => {
+        setwWordLength((res.item.name).split("").length)
         setCurrentSong({
           name: res.item.name,
           artist: res.item.artists[0].name,
-          alblum: res.item.album.name,
+          album: res.item.album.name,
           albumImg: res.item.album.images[1].url
         })
-        console.log(res)
+        console.log(wordLength)
       })
   }
 
-  const [currentSong, setCurrentSong] = useState('pending')
 
 
   return (
@@ -45,16 +48,24 @@ export default function FetchCurrentSong(props) {
               <img className='disc-img' src={currentSong.albumImg} alt='albumImg' />
             </div>
 
-            <p>current song is: {currentSong.name}
-              by {currentSong.artist}
-              from the ablum of {currentSong.alblum}
-            </p>
+            <div className="item-details">
+              {wordLength >= 18 &&
+                <p className="song-name-long">{currentSong.name}</p>
+              }
+              {wordLength < 18 &&
+                <p className="song-name">{currentSong.name}</p>
+              }
+
+              {/* <p className="song-ablum">{currentSong.album}</p> */}
+              <p className="song-artist">{currentSong.artist}</p>
+
+            </div>
           </div>
         }
         <img className='arm' src='image/arm.png' alt='arm' />
         <div className="button-container">
-          <button onClick={() => fetchUserCurrentSong()}>click to fetch</button>
-          <button onClick={() => setCurrentFunc('default')}>return</button>
+          <button className="neu-button " onClick={() => setCurrentFunc('default')}>{"<"}</button>
+          <button className="neu-button " onClick={() => fetchUserCurrentSong()}>See Current Song</button>
         </div>
       </section>
     </div>
