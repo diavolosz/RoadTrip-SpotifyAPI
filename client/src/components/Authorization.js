@@ -11,7 +11,8 @@ export default function Authorization(props) {
 
   // -----------------------------
   // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
-   const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
+  const REDIRECT_URI_AFTER_LOGIN = 'http://localhost:3000';
+  // const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
   //use this for build deployment
   // -----------------------------
 
@@ -72,7 +73,8 @@ export default function Authorization(props) {
 
     // -----------------------------
     // window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
-     window.location = REDIRECT_URI_AFTER_LOGIN 
+    window.location = 'http://localhost:3000' 
+    window.location = REDIRECT_URI_AFTER_LOGIN 
     //use this for build deployment
     //------------------------------
 
@@ -133,25 +135,34 @@ export default function Authorization(props) {
         {
           sessionState === "default" && !localStorage.session_state &&
           <div className="session-option-container">
-            <div className="option-intro">Are You Creating or Joining a Session?</div>
-            <div className="button-container">
-              <section
-                value="create"
-                onClick={() => {
-                  handleCreate()
-                }}
-                className="session-create">
-                Create
-              </section>
-              <section
-                value="join"
-                onClick={() => {
-                  handleJoin()
-                }}
-                className="session-create">
-                Join
-              </section>
+            <div className="image-container"> 
+              <img className='intro-img-1' src='image/dance1.png' alt='dance1' />
+              <img className='intro-img-2' src='image/dance2.png' alt='dance2' />
+              <img className='intro-img-3' src='image/headphone1.png' alt='headphone1' />
+              <img className='intro-img-4' src='image/line-vynl.png' alt='vynl' />
             </div>
+            <div className="option-intro">Vynlia</div>
+            <div className="option-quote">
+              Let Sharing Music Be a Form of Love
+            </div>
+            <div className="option-des-container">
+
+              <div className="button-container">
+                <section
+                  value="create"
+                  onClick={() => { handleCreate() }}
+                  className="session-create">
+                  Create
+                </section>
+                <section
+                  value="join"
+                  onClick={() => { handleJoin() }}
+                  className="session-create">
+                  Join
+                </section>
+              </div>
+            </div>
+            {/* <div className="option-intro">Are You Creating or Joining a Session?</div> */}
           </div>
         }
 
