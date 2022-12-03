@@ -10,12 +10,13 @@ export default function LandingAnimation() {
       <div className="lower-block"></div>
 
       <div className='intro-logo-container'>
-        <div className='logo-name'>Queue Up</div>
+        <div className='logo-name'>Vynlia</div>
       </div>
 
       <div className='intro-logo-container'>
         <div className='logo-icon'>
-          <span>Logo Here</span>
+          {/* <span>Logo Here</span> */}
+          <img clasName='landing-logo' src='image/logoTemp.png' alt='logo'/>
         </div>
       </div>
     </div>

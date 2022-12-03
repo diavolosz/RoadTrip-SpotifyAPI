@@ -31,6 +31,7 @@ export default function Authorization(props) {
   const [sessionDisplay, setSessionDisplay] = useState("default")
   const [userInfo, setUserInfo] = useState({})
 
+  const [simpleSessionState, setSimpleSessionState] = useState('default')
 
   const fetchUserInfo = () => {
     spotifyApi.getMe()
@@ -118,13 +119,38 @@ export default function Authorization(props) {
 
   const loginForm =
     <section className="session-join-container">
-      <form onSubmit={(e) => { handleLogin(e) }}>
-        <input value={CLIENT_ID} onChange={e => setCLIENT_ID(e.target.value)} />
-        <button type="submit">Log in</button>
-      </form>
 
-      <button className="return-main"
-        onClick={() => handleReturn()}>return</button>
+      <div className="return-main-container">
+        <button className="return-main"
+          onClick={() => handleReturn()}>
+            Return
+        </button>
+      </div>
+
+      <div className="login-function-container">
+        { simpleSessionState === 'create' &&
+          <div>
+            Get cozy before hosting a music session
+          </div>
+        }
+
+        { simpleSessionState === 'join' &&
+          <div>
+            Get comfy before joining a music session
+          </div>
+        }
+
+        <div>
+          Start by logging into your spotify account !
+        </div>
+
+        <form onSubmit={(e) => { handleLogin(e) }}>
+          <input value={CLIENT_ID} onChange={e => setCLIENT_ID(e.target.value)} />
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+
+    
     </section>
 
 
@@ -150,17 +176,26 @@ export default function Authorization(props) {
               <div className="button-container">
                 <section
                   value="create"
-                  onClick={() => { handleCreate() }}
+                  onClick={() => { 
+                    handleCreate() 
+                    setSimpleSessionState('create')
+                  }}
                   className="session-create">
-                  Create
+                  - Host -
                 </section>
                 <section
                   value="join"
-                  onClick={() => { handleJoin() }}
+                  onClick={() => { 
+                    handleJoin() 
+                    setSimpleSessionState('join')
+                  }}
                   className="session-create">
-                  Join
+                  - Guest -
                 </section>
               </div>
+              <footer>
+                By logging in your agree on the <a>privacy policy</a>
+              </footer>
             </div>
             {/* <div className="option-intro">Are You Creating or Joining a Session?</div> */}
           </div>

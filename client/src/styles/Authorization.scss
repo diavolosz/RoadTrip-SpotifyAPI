@@ -34,12 +34,12 @@
         align-items: center;
         height: 40vh;
         width: 100vw;
-        margin-bottom: 0.5em;
+        margin-bottom: 1em;
 
         .intro-img-1 {
           position: absolute;
-          height: 60%;
-          width: 65%;
+          height: 380px;
+          width: 250px;
           opacity: 0;
           animation: fadeInNOut-B;
           animation-duration: 15s;
@@ -49,8 +49,8 @@
         
         .intro-img-2 {
           position: absolute;
-          height: 52%;
-          width: 90%;
+          height: 350px;
+          width: 350px;
           opacity: 0;
           animation: fadeInNOut-D;
           animation-duration: 15s;
@@ -159,6 +159,45 @@
             left: 5px;
           }
         }
+      }
+    }
+
+    .session-join-container {
+
+      .return-main-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .return-main {
+          padding: 0px;
+          color: white;
+          font-size: 14px;
+          font-family: 'Gloria Hallelujah', cursive;
+          background: none;
+          border: none;
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    footer {
+      margin-top: 2.5em;
+      font-size: 12px;
+      text-align: center;
+
+      a {
+        text-decoration: underline;
       }
     }
   }
