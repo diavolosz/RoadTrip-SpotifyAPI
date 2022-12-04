@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
+//       font-family: 'Gloria Hallelujah', cursive;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 .auth-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   // background-color: red;
-  height: 18vh;
+  height: 80vh;
   width: 95vw;
-  // margin-top: 1.5em;
+  margin-top: 1.5em;
 
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 20px;
 
 
@@ -17,6 +22,110 @@
     // background-color: rgb(46, 46, 177);
     width: 100%;
     
+
+    .session-option-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+        width: 100vw;
+        margin-bottom: 1em;
+
+        .intro-img-1 {
+          position: absolute;
+          height: 380px;
+          width: 250px;
+          opacity: 0;
+          animation: fadeInNOut-B;
+          animation-duration: 15s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+        
+        .intro-img-2 {
+          position: absolute;
+          height: 350px;
+          width: 350px;
+          opacity: 0;
+          animation: fadeInNOut-D;
+          animation-duration: 15s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+
+        .intro-img-3 {
+          position: absolute;
+          height: 30%;
+          object-fit: cover;
+          opacity: 0;
+          animation: fadeInNOut-C;
+          animation-duration: 15s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+
+        .intro-img-4 {
+          position: absolute;
+          height: 35%;
+          object-fit: cover;
+          opacity: 1;
+          animation: fadeInNOut-A;
+          animation-duration: 15s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      }
+
+      .option-intro {
+        font-size: 58px;
+        font-weight: bold;
+        letter-spacing: 8px;
+        margin-bottom: 0.1em;
+        height: 14vh;
+        font-family: 'Gloria Hallelujah', cursive;
+      }
+
+      .option-quote {
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        // margin-bottom: 1em;
+        width: 73vw;
+        margin: 0 auto 1.5em auto;
+        font-family: 'Gloria Hallelujah', cursive;
+      }
+
+      .option-des-container {
+
+        .button-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+
+          section {
+            background-color: white;
+            color: black;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            height: 35px;
+            width: 75vw;
+            border-radius: 24px;
+          }
+        }
+
+      }
+    }
+
+
+
+
     .intro-box {
       display: flex;
       justify-content: center;
@@ -52,5 +161,168 @@
         }
       }
     }
+
+    .session-join-container {
+
+      .return-main-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .return-main {
+          padding: 0px;
+          color: white;
+          font-size: 14px;
+          font-family: 'Gloria Hallelujah', cursive;
+          background: none;
+          border: none;
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    footer {
+      margin-top: 2.5em;
+      font-size: 12px;
+      text-align: center;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+@keyframes fadeInNOut-A {
+  0% {
+    opacity: 0;
+  }
+  12.5%{
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  62.5%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+  }
+  87.5%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
+
+@keyframes fadeInNOut-B {
+  0% {
+    opacity: 0;
+  }
+  12.5%{
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  37.5% {
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  62.5%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+  }
+  87.5%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeInNOut-C {
+  0% {
+    opacity: 0;
+  }
+  12.5%{
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  62.5%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 0;
+  }
+  87.5%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInNOut-D {
+  0% {
+    opacity: 0;
+  }
+  12.5%{
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  62.5%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+  }
+  87.5%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
   }
 }
