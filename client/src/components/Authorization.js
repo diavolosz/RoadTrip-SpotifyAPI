@@ -11,8 +11,8 @@ export default function Authorization(props) {
 
   // -----------------------------
   // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
-  const REDIRECT_URI_AFTER_LOGIN = 'http://localhost:3000';
-  // const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
+  // const REDIRECT_URI_AFTER_LOGIN = 'http://localhost:3000';
+  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
   //use this for build deployment
   // -----------------------------
 
@@ -73,9 +73,9 @@ export default function Authorization(props) {
     localStorage.clear()
 
     // -----------------------------
-    window.location = 'http://localhost:3000'
+    // window.location = 'http://localhost:3000'
     // window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
-    // window.location = REDIRECT_URI_AFTER_LOGIN 
+    window.location = REDIRECT_URI_AFTER_LOGIN 
     //use this for build deployment
     //------------------------------
 
