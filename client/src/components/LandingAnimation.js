@@ -16,7 +16,7 @@ export default function LandingAnimation() {
       <div className='intro-logo-container'>
         <div className='logo-icon'>
           {/* <span>Logo Here</span> */}
-          <img clasName='landing-logo' src='image/logoTemp.png' alt='logo'/>
+          <img clasName='landing-logo' src='image/VynliaLogo.png' alt='logo'/>
         </div>
       </div>
     </div>

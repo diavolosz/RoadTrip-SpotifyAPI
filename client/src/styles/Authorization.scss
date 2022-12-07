@@ -12,7 +12,7 @@
   // background-color: red;
   // height: 80vh;
   width: 95vw;
-  margin-top: 1.5em;
+  // margin-top: 1.5em;
 
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
@@ -21,6 +21,7 @@
   #login {
     // background-color: rgb(46, 46, 177);
     width: 100%;
+    
     
 
     .session-option-container {
@@ -34,6 +35,7 @@
         align-items: center;
         height: 40vh;
         width: 100vw;
+        margin-top: 1.5em;
         margin-bottom: 1em;
 
         .intro-img-1 {
@@ -159,6 +161,14 @@
             left: 5px;
           }
         }
+      }
+
+      .intro-statement {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 12px 0 0 0;
       }
     }
 

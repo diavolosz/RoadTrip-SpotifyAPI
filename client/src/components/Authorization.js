@@ -12,7 +12,7 @@ export default function Authorization(props) {
   // -----------------------------
   // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
   const REDIRECT_URI_AFTER_LOGIN = 'http://localhost:3000';
- // const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
+  // const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
   //use this for build deployment
   // -----------------------------
 
@@ -73,7 +73,7 @@ export default function Authorization(props) {
     localStorage.clear()
 
     // -----------------------------
-    window.location = 'http://localhost:3000' 
+    window.location = 'http://localhost:3000'
     // window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
     // window.location = REDIRECT_URI_AFTER_LOGIN 
     //use this for build deployment
@@ -123,18 +123,18 @@ export default function Authorization(props) {
       <div className="return-main-container">
         <button className="return-main"
           onClick={() => handleReturn()}>
-            Return
+          Return
         </button>
       </div>
 
       <div className="login-function-container">
-        { simpleSessionState === 'create' &&
+        {simpleSessionState === 'create' &&
           <div>
             Get cozy before hosting a music session
           </div>
         }
 
-        { simpleSessionState === 'join' &&
+        {simpleSessionState === 'join' &&
           <div>
             Get comfy before joining a music session
           </div>
@@ -150,7 +150,7 @@ export default function Authorization(props) {
         </form>
       </div>
 
-    
+
     </section>
 
 
@@ -161,7 +161,7 @@ export default function Authorization(props) {
         {
           sessionState === "default" && !localStorage.session_state &&
           <div className="session-option-container">
-            <div className="image-container"> 
+            <div className="image-container">
               <img className='intro-img-1' src='image/dance1.png' alt='dance1' />
               <img className='intro-img-2' src='image/dance2.png' alt='dance2' />
               <img className='intro-img-3' src='image/headphone1.png' alt='headphone1' />
@@ -176,8 +176,8 @@ export default function Authorization(props) {
               <div className="button-container">
                 <section
                   value="create"
-                  onClick={() => { 
-                    handleCreate() 
+                  onClick={() => {
+                    handleCreate()
                     setSimpleSessionState('create')
                   }}
                   className="session-create">
@@ -185,8 +185,8 @@ export default function Authorization(props) {
                 </section>
                 <section
                   value="join"
-                  onClick={() => { 
-                    handleJoin() 
+                  onClick={() => {
+                    handleJoin()
                     setSimpleSessionState('join')
                   }}
                   className="session-create">
@@ -208,8 +208,11 @@ export default function Authorization(props) {
             <div className="logout-button">
               <button onClick={() => { handleLogout() }}>Quit Session</button>
             </div>
-            <span>Welcome back ! {userInfo.username}.</span>
-            <span>Start inviting your friend to join !</span>
+            <div className="intro-statement">
+              <span>Welcome back ! {userInfo.username}.</span>
+              <span>Start inviting your friend to join !</span>
+            </div>
+
           </div>
         }
 
@@ -218,8 +221,10 @@ export default function Authorization(props) {
             <div className="logout-button">
               <button onClick={() => { handleLogout() }}>Logout</button>
             </div>
-            <span>Welcome back ! {userInfo.username}.</span>
-            <span>Look for an invitaion for a session !</span>
+            <div className="intro-statement">
+              <span>Welcome back ! {userInfo.username}.</span>
+              <span>Look for an invitaion for a session !</span>
+            </div>
           </div>
         }
       </div>
