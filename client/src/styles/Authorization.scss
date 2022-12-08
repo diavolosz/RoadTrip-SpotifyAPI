@@ -112,7 +112,7 @@
 
           section {
             background-color: white;
-            color: black;
+            color: var(--font-tertiary);
             font-size: 24px;
             font-weight: 600;
             text-align: center;
@@ -173,11 +173,13 @@
     }
 
     .session-join-container {
+      // border: 2px red solid;
 
       .return-main-container {
         display: flex;
         justify-content: flex-end;
-
+        margin: 16px 0 0 0;
+        
         .return-main {
           padding: 0px;
           color: white;
@@ -187,6 +189,106 @@
           border: none;
         }
       }
+
+      .login-function-container {
+      // outline: 2px red solid;
+
+        .create-info-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+  
+          .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0 25px 0;
+  
+            img {
+              object-fit: cover;
+              height: 35vh;
+              width: 90vw;
+              border-radius: 24px;
+            }
+          }
+          .login-hook {
+            width: 90vw;
+            text-align: center;
+            margin: 0 auto 4em auto;
+            font-size: 14px;
+            font-family: 'Gloria Hallelujah', cursive;
+
+            animation: pulse 3s infinite;
+          }
+        }
+
+        .login-instruction {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 80vw;
+          font-size: 14px;
+          margin: 0 auto 12px auto;
+
+          .icon {
+            margin-left: 5px;
+            font-size: 25px;
+          }
+        }
+
+        .login-form-container {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          background-color: var(--font-secondary);
+          border-radius: 50px;
+          width: 330px;
+          height: 60px;
+          margin: 0 auto;
+
+          animation: loginButtonExtend 1.5s forwards;
+          
+          input {
+            background-color: var(--font-secondary);            
+            height: 80%;
+            width: 60%;
+            margin: 0 0 0 10px;
+            padding: 0;
+            border: none;
+            
+            font-size: 16px;
+            font-weight: bold;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 17px;
+            height: 80%;
+            width: 90px;
+            border: none;
+            border-radius: 50px;
+            margin-right: 8px;
+            background-color: rgb(70, 37, 15);
+            color: wheat;
+
+            span {
+              width: 90px;
+            }
+          }
+
+        }
+      }
+
+
+
+
+
     }
 
 
@@ -334,5 +436,29 @@
   }
   100%{
     opacity: 0;
+  }
+}
+
+@keyframes loginButtonExtend {
+  from {
+    width: 105px;
+  }
+  to {
+    width: 330px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    scale: 1;
+  }
+  20% {
+    scale: 1.05;
+  }
+  40% {
+    scale: 1;
+  }
+  100% {
+    scale: 1;
   }
 }

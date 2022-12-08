@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { CircleWavyQuestion } from "phosphor-react";
+
 
 import '../styles/Authorization.scss'
 
@@ -12,7 +14,7 @@ export default function Authorization(props) {
   // -----------------------------
   // const REDIRECT_URI_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN;
   // const REDIRECT_URI_AFTER_LOGIN = 'http://localhost:3000';
-  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/"; 
+  const REDIRECT_URI_AFTER_LOGIN = "https://iridescent-mousse-e23e3b.netlify.app/";
   //use this for build deployment
   // -----------------------------
 
@@ -75,7 +77,7 @@ export default function Authorization(props) {
     // -----------------------------
     // window.location = 'http://localhost:3000'
     // window.location = `${process.env.REACT_APP_REDIRECT_URI_AFTER_LOGIN}`
-    window.location = REDIRECT_URI_AFTER_LOGIN 
+    window.location = REDIRECT_URI_AFTER_LOGIN
     //use this for build deployment
     //------------------------------
 
@@ -129,8 +131,11 @@ export default function Authorization(props) {
 
       <div className="login-function-container">
         {simpleSessionState === 'create' &&
-          <div>
-            Get cozy before hosting a music session
+          <div className="create-info-container">
+            <div className="image-container">
+              <img src="image/cozyFP.webp" />
+            </div>
+            <div className="login-hook">Warning: It is illegal to not get cozy / comfy before hosting a music session !</div>
           </div>
         }
 
@@ -140,13 +145,16 @@ export default function Authorization(props) {
           </div>
         }
 
-        <div>
-          Start by logging into your spotify account !
+        <div className="login-instruction">
+          <div>Start by logging into your spotify account.</div>
+          <CircleWavyQuestion className="icon"/>
         </div>
 
-        <form onSubmit={(e) => { handleLogin(e) }}>
+        <form className="login-form-container" onSubmit={(e) => { handleLogin(e) }}>
           <input value={CLIENT_ID} onChange={e => setCLIENT_ID(e.target.value)} />
-          <button type="submit">Log in</button>
+          <button type="submit">
+            <span>Log in</span>
+          </button>
         </form>
       </div>
 
@@ -228,6 +236,10 @@ export default function Authorization(props) {
           </div>
         }
       </div>
+
+
+      
+
 
     </div>
   )
