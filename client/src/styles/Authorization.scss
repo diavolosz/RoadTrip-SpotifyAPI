@@ -178,7 +178,7 @@
       .return-main-container {
         display: flex;
         justify-content: flex-end;
-        margin: 16px 0 0 0;
+        margin: 16px 8px 0 0;
         
         .return-main {
           padding: 0px;
@@ -204,10 +204,15 @@
             margin: 25px 0 25px 0;
   
             img {
+              position: relative;
+              top: 20px;
               object-fit: cover;
               height: 35vh;
               width: 90vw;
               border-radius: 24px;
+
+              opacity: 0;
+              animation: simpleFadeInUp 0.8s forwards;
             }
           }
           .login-hook {
@@ -251,7 +256,7 @@
             background-color: var(--font-secondary);            
             height: 80%;
             width: 60%;
-            margin: 0 0 0 10px;
+            margin: 0 8px 0 10px;
             padding: 0;
             border: none;
             
@@ -460,5 +465,16 @@
   }
   100% {
     scale: 1;
+  }
+}
+
+@keyframes simpleFadeInUp {
+  from {
+    top: 20px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
   }
 }
