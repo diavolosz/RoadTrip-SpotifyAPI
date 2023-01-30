@@ -573,10 +573,20 @@
     top: 0px;
     opacity: 1;
   }
-  50% {
+  40% {
     top: 0px;
     opacity: 1;
     left: 0px;
+  }
+  45% {
+    top: 0px;
+    opacity: 1;
+    left: -2px;
+  }
+  50% {
+    top: 0px;
+    opacity: 1;
+    left: 2px;
   }
   55% {
     top: 0px;
@@ -588,17 +598,7 @@
     opacity: 1;
     left: 2px;
   }
-  65% {
-    top: 0px;
-    opacity: 1;
-    left: -2px;
-  }
-  70% {
-    top: 0px;
-    opacity: 1;
-    left: 2px;
-  }
-  80% {
+  75% {
     top: 0px;
     opacity: 1;
     left: 0px;
