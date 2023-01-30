@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CircleWavyQuestion } from "phosphor-react";
+import { CircleWavyQuestion, Warning } from "phosphor-react";
 
 
 import '../styles/Authorization.scss'
@@ -35,6 +35,9 @@ export default function Authorization(props) {
 
   const [simpleSessionState, setSimpleSessionState] = useState('default')
 
+  const [isLoginLoading, setIsLoginLoading] = useState(false)
+  const [isShowEmptyId, setisShowEmptyId] = useState(false)
+
   const fetchUserInfo = () => {
     spotifyApi.getMe()
       .then((res) => {
@@ -59,15 +62,30 @@ export default function Authorization(props) {
   }
 
   const handleLogin = (e) => {
-    e.preventDefault()
 
-    if (sessionDisplay === 'create') {
-      localStorage.setItem('session_state', 'create')
-    } else if (sessionDisplay === 'join') {
-      localStorage.setItem('session_state', 'join')
+    if (!CLIENT_ID.length) {
+      e.preventDefault()
+      setisShowEmptyId(true)
+      return setTimeout(() => {
+        setisShowEmptyId(false)
+      }, 2000)
     }
 
-    fetchLogin()
+    e.preventDefault()
+    setIsLoginLoading(true)
+
+    setTimeout(() => {
+      setIsLoginLoading(false)
+    }, 2000)
+
+    setTimeout(() => {
+      if (sessionDisplay === 'create') {
+        localStorage.setItem('session_state', 'create')
+      } else if (sessionDisplay === 'join') {
+        localStorage.setItem('session_state', 'join')
+      }
+      fetchLogin()
+    }, 1500)
   }
 
 
@@ -130,6 +148,7 @@ export default function Authorization(props) {
       </div>
 
       <div className="login-function-container">
+
         {simpleSessionState === 'create' &&
           <div className="create-info-container">
             <div className="image-container">
@@ -147,17 +166,26 @@ export default function Authorization(props) {
 
         <div className="login-instruction">
           <div>Start by logging into your spotify account.</div>
-          <CircleWavyQuestion className="icon"/>
+          <CircleWavyQuestion className="icon" />
         </div>
 
-        <form className="login-form-container" onSubmit={(e) => { handleLogin(e) }}>
+        <form
+          className={`${isLoginLoading ? "loading-login" : "login-form-container"}`}
+          onSubmit={(e) => { handleLogin(e) }}
+        >
           <input value={CLIENT_ID} onChange={e => setCLIENT_ID(e.target.value)} />
           <button type="submit">
             <span>Log in</span>
           </button>
         </form>
-      </div>
 
+        {isShowEmptyId &&
+          <div className="login-warning">
+            <div>It looks like you forgot to enter your log in ID !</div>
+            <Warning className="icon" />
+          </div>
+        }
+      </div>
 
     </section>
 
@@ -238,7 +266,7 @@ export default function Authorization(props) {
       </div>
 
 
-      
+
 
 
     </div>
